@@ -109,10 +109,6 @@ event will not be created</p></td>
 <td><p>The request Content-Type header is not application/json, the
 event will not be created</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tbody>
 </table>
 
@@ -213,11 +209,6 @@ JSON
 <td><p>The request Accept header does not contain application/json or
 text/html.</p></td>
 </tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -292,10 +283,6 @@ GET /events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -337,11 +324,6 @@ JSON
 <td><p>406 Not Acceptable</p></td>
 <td><p>The request Accept header does not contain
 application/json.</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -404,10 +386,6 @@ PATCH /events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -450,12 +428,6 @@ Required
 <td><p>string</p></td>
 <td><p>Description of the event</p></td>
 <td><p>No</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -521,11 +493,6 @@ event will not be edited</p></td>
 <td><p>415 Unsupported Media Type</p></td>
 <td><p>The request Content-Type header is not application/json, the
 event will not be edited</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -609,10 +576,6 @@ PUT /events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -655,12 +618,6 @@ Required
 <td><p>string</p></td>
 <td><p>Description of the event</p></td>
 <td><p>No</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -728,11 +685,6 @@ event will not be replaced</p></td>
 <td><p>415 Unsupported Media Type</p></td>
 <td><p>The request Content-Type header is not application/json, the
 event will not be replaced</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -819,10 +771,6 @@ DELETE /events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -873,11 +821,6 @@ authenticated</p></td>
 <td><p>Failure</p></td>
 <td><p>404 Not Found</p></td>
 <td><p>No event with this event_id exists</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -966,12 +909,6 @@ None
 <td><p>Type of venue</p></td>
 <td><p>Yes</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1022,11 +959,6 @@ venue will not be created</p></td>
 <td><p>415 Unsupported Media Type</p></td>
 <td><p>The request Content-Type header is not application/json, the
 venue will not be created</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1122,11 +1054,6 @@ JSON
 <td><p>The request Accept header does not contain application/json or
 text/html.</p></td>
 </tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1213,10 +1140,6 @@ GET /venues/:venues_id
 <td><p>venue_id</p></td>
 <td><p>ID of the venue</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1258,11 +1181,6 @@ JSON
 <td><p>406 Not Acceptable</p></td>
 <td><p>The request Accept header does not contain
 application/json.</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1331,10 +1249,6 @@ PATCH /venues/:venue_id
 <td><p>venue_id</p></td>
 <td><p>ID of the venue</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1377,12 +1291,6 @@ None
 <td><p>string</p></td>
 <td><p>Type of venue</p></td>
 <td><p>No</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1437,11 +1345,6 @@ venue will not be edited</p></td>
 <td><p>415 Unsupported Media Type</p></td>
 <td><p>The request Content-Type header is not application/json, the
 venue will not be edited</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1523,10 +1426,6 @@ PUT /venues/:venue_id
 <td><p>venue_id</p></td>
 <td><p>ID of the venue</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1569,12 +1468,6 @@ None
 <td><p>string</p></td>
 <td><p>Type of venue</p></td>
 <td><p>Yes</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1631,11 +1524,6 @@ venue will not be replaced</p></td>
 <td><p>415 Unsupported Media Type</p></td>
 <td><p>The request Content-Type header is not application/json, the
 venue will not be replaced</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1716,10 +1604,6 @@ DELETE /venue /:venue _id
 <td><p>venue _id</p></td>
 <td><p>ID of the venue</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1759,11 +1643,6 @@ Failure: JSON
 <td><p>Failure</p></td>
 <td><p>404 Not Found</p></td>
 <td><p>No venue with this venue_id exists</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1807,10 +1686,6 @@ GET /venues/:venues_id/events
 <td><p>venue_id</p></td>
 <td><p>ID of the venue</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1852,11 +1727,6 @@ JSON
 <td><p>406 Not Acceptable</p></td>
 <td><p>The request Accept header does not contain
 application/json.</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -1922,10 +1792,6 @@ PUT /:venue_id/events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -1977,11 +1843,6 @@ authenticated</p></td>
 <td><p>404 Not Found</p></td>
 <td><p>No venue with this venue_id exists or no event with this event_id
 exists</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -2041,10 +1902,6 @@ DELETE /:venue_id/events/:event_id
 <td><p>event_id</p></td>
 <td><p>ID of the event</p></td>
 </tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
@@ -2096,11 +1953,6 @@ authenticated</p></td>
 <td><p>404 Not Found</p></td>
 <td><p>No venue with this venue_id exists or no event with this event_id
 exists</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -2181,11 +2033,6 @@ JSON
 <td><p>406 Not Acceptable</p></td>
 <td><p>The request Accept header does not contain application/json or
 text/html.</p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
