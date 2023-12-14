@@ -3,19 +3,6 @@ const datastore = new Datastore();
 
 const USER = "user"; 
 
-// Clear out existing users
-async function deleteAllUsers() {
-    const query = datastore.createQuery(USER);
-    const [users] = await datastore.runQuery(query);
-  
-    const keys = users.map((user) => user[datastore.KEY]);
-    await datastore.delete(keys);
-}
-
-deleteAllUsers()
-    .then(() => console.log('All users have been deleted'))
-    .catch((error) => console.error('Error deleting users:', error));
-
 //////////////////////////////////////////////////////////////////////////////
 
 function userFromDatastore(user){
