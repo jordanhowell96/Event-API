@@ -4,19 +4,6 @@ const datastore = new Datastore();
 
 const EVENT = "event";
 
-// Clear out existing events
-async function deleteAllEvents() {
-    const query = datastore.createQuery(EVENT);
-    const [events] = await datastore.runQuery(query);
-  
-    const keys = events.map((event) => event[datastore.KEY]);
-    await datastore.delete(keys);
-}
-  
-deleteAllEvents()
-    .then(() => console.log('All events have been deleted'))
-    .catch((error) => console.error('Error deleting events:', error));
-
 //////////////////////////////////////////////////////////////////////////////
 
 async function eventFromDatastore(event, baseUrl) {
