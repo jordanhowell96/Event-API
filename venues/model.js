@@ -4,19 +4,6 @@ const datastore = new Datastore();
 const EVENT = "event";
 const VENUE = "venue";
 
-// Clear out existing venues
-async function deleteAllVenues() {
-    const query = datastore.createQuery(VENUE);
-    const [venues] = await datastore.runQuery(query);
-  
-    const keys = venues.map((venue) => venue[datastore.KEY]);
-    await datastore.delete(keys);
-}
-
-deleteAllVenues()
-    .then(() => console.log('All venues have been deleted'))
-    .catch((error) => console.error('Error deleting venues:', error));
-
 //////////////////////////////////////////////////////////////////////////////
 
 async function venueFromDatastore(venue, baseUrl) {
