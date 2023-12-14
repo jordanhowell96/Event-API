@@ -1,17 +1,10 @@
 # <span id="_Toc84856244">Create a</span>n Event
 
-Allows you to create a new event.
+```json
+POST /events
+```
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>POST /events</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+Allows you to create a new event.
 
 ## Request
 
@@ -59,31 +52,18 @@ Required
 <td><p>Description of the event</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"name": "</code><code>Trivia Night</code><code>",</code></p>
-<p><code>  "</code><code>date</code><code>": "</code><code>02/17/2023</code><code>",</code></p>
-<p><code>"</code><code>description</code><code>": </code><code>"</code><code>Trivia night at Paddy</code><code>’</code><code>s Pub</code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy's Pub"
+}
+```
 
 ## Response
 
@@ -133,89 +113,65 @@ event will not be created</p></td>
 <td></td>
 <td></td>
 <td></td>
-</tr>
 </tbody>
 </table>
 
 ### Response Examples
 
 #### Success
-
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 201 Created</p>
-<p>{</p>
-<p><code>"id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>  </code><code>"date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>  </code><code>"</code><code>host</code><code>"</code><code>: </code><code>"</code><code>auth0|</code><code>123456789</code><code>",</code></p>
-<p><code>  </code><code>"</code><code>venue</code><code>": </code><code>null</code><code>,</code></p>
-<p><code>  "self": "https://example.com/</code><code>events</code><code>/123"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 201 Created
+{
+    "id": 123,
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy’s Pub",
+    "host": "auth0|123456789",
+    "venue": null,
+    "self": "https://example.com/events/123"
+}
+```
 
 #### Failure
-
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "The request object is missing at least one of the required attributes"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "The request object is missing at least one of the required attributes"
+}
+```
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # <span id="_Toc84856245">Get</span><span id="_Toc84856245"> </span>Events
 
 Allows you to get all existing events if unauthorized, or your own
 events if authorized. Paginated to 5 events per page.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /events</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /events
+```
 
 ## Request
 
@@ -269,79 +225,58 @@ text/html.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>{</p>
-<p><code>"</code><code>events</code><code>": </code><code>[</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>        </code><code>"id": 123,</code></p>
-<p><code>       </code><code>"name": "Trivia Night",</code></p>
-<p><code> </code><code>      </code><code>"date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>        </code><code>"host": "</code><code>auth0|</code><code>123456789",</code></p>
-<p><code>  </code><code>      </code><code>"venue": </code><code>{</code></p>
-<p><code>           "id": </code><code>789</code><code>,</code></p>
-<p><code>           "name": "</code><code>Paddy</code><code>’</code><code>s</code><code> </code><code>Pub</code><code>"</code></p>
-<p><code>           "self": "https://example.com/venues/</code><code>789</code><code>"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>  </code><code>      </code><code>"self": "https://example.com/events/123"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>        "id": </code><code>321</code><code>,</code></p>
-<p><code>       </code><code>"name": "</code><code>Karaoke</code><code> Night",</code></p>
-<p><code> </code><code>      </code><code>"date": "02/</code><code>25</code><code>/2023",</code></p>
-<p><code>"description": "Karaoke </code><code>n</code><code>ight</code><code> </code><code>at </code><code>Moe</code><code>’</code><code>s Tavern</code><code>"</code></p>
-<p><code>        "host": "</code><code>auth0|</code><code>987654321</code><code>",</code></p>
-<p><code>        "venue":</code><code> </code><code>{</code></p>
-<p><code>           </code><code>"id"</code><code>:</code><code> 987,</code></p>
-<p><code>           "name</code><code>"</code><code>: </code><code>"Moe</code><code>’</code><code>s Tavern"</code></p>
-<p><code>           </code><code>"</code><code>self</code><code>": "https://example.com/</code><code>venues</code><code>/</code><code>987</code><code>"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>        "self": "https://example.com/events/</code><code>321</code><code>"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code></p>
-<p><code>  ]</code><code>,</code></p>
-<p><code>"</code><code>next</code><code>": "</code><code>www.example.com/events/?cursor=ABCdef123==</code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+"events": [
+    {
+        "id": 123,
+        "name": "Trivia Night",
+        "date": "02/17/2023",
+        "description": "Trivia night at Paddy’s Pub",
+        "host": "auth0|123456789",
+        "venue": {
+           "id": 789,
+           "name": "Paddy’s Pub",
+           "self": "https://example.com/venues/789"
+        },
+        "self": "https://example.com/events/123"
+    },
+    {
+        "id": 321,
+        "name": "Karaoke Night",
+        "date": "02/25/2023",
+        "description": "Karaoke night at Moe’s Tavern",
+        "host": "auth0|987654321",
+        "venue": {
+           "id": 987,
+           "name": "Moe’s Tavern",
+           "self": "https://example.com/venues/987"
+        },
+        "self": "https://example.com/events/321"
+    },
+...
+],
+"next": "www.example.com/events/?cursor=ABCdef123=="
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid types: application/json</code><code> </code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid types: application/json"
+}
+```
 
 # Get an Event
 
 Allows you to get an existing event.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /events/:event_id
+```
 
 ## Request
 
@@ -415,66 +350,45 @@ application/json.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>{</p>
-<p><code>    </code><code>"id": 123,</code></p>
-<p><code>    </code><code>"name": "Trivia Night",</code></p>
-<p><code> </code><code>   </code><code>"date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>    </code><code> </code><code>"host": "</code><code>auth0|</code><code>123456789",</code></p>
-<p><code>     "venue": </code><code>{</code></p>
-<p><code>     </code><code>    </code><code>"id": 789,</code></p>
-<p><code>     </code><code>    </code><code>"name": "Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>     </code><code>    </code><code>"self": "https://example.com/venues/789"</code></p>
-<p><code>     </code><code>}</code><code>,</code></p>
-<p><code>     "self": "https://example.com/events/123"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+    "id": 123,
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy’s Pub",
+    "host": "auth0|123456789",
+    "venue": {
+        "id": 789,
+        "name": "Paddy’s Pub",
+        "self": "https://example.com/venues/789"
+    },
+    "self": "https://example.com/events/123"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No event with this event_id exists"</code><code>"</code><code> </code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid type: application/json</code><code> </code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 404 Not Found
+{
+    "error": "No event with this event_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
 
 # Edit an Event
 
 Allows you to edit an existing event.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>PATCH /events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+PATCH /events/:event_id
+```
 
 ## Request
 
@@ -548,18 +462,11 @@ Required
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "description": "Trivia night at Paddy’s Pub"
+}
+```
 
 ## Response
 
@@ -627,87 +534,66 @@ event will not be edited</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>{</p>
-<p><code>"id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>  "date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>  "host": "</code><code>auth0|</code><code>123456789",</code></p>
-<p><code>  "venue": null,</code></p>
-<p><code>  "self": "https://example.com/events/123"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+    "id": 123,
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy’s Pub",
+    "host": "auth0|123456789",
+    "venue": null,
+    "self": "https://example.com/events/123"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 403 Forbidden</p>
-<p>{</p>
-<p><code>"error": "Forbidden"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No event with this event_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 403 Forbidden
+{
+    "error": "Forbidden"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "No event with this event_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # Replace an Event
 
 Allows you to replace an existing event (the ID and venue remains
 unchanged).
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>PUT /events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+PUT /events/:event_id
+```
 
 ## Request
 
@@ -781,20 +667,13 @@ Required
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>  "date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy’s Pub"
+}
+```
 
 ## Response
 
@@ -862,90 +741,69 @@ event will not be replaced</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 201 Created</p>
-<p>{</p>
-<p><code>"id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>  "date": "02/17/2023",</code></p>
-<p><code>"description": "Trivia night at Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>  "host": "</code><code>auth0|</code><code>123456789",</code></p>
-<p><code>  </code><code>"venue": </code><code>{</code></p>
-<p><code>     "id": 789,</code></p>
-<p><code>     "name": "Paddy</code><code>’</code><code>s Pub"</code></p>
-<p><code>     "self": "https://example.com/venues/789"</code></p>
-<p><code>  </code><code>}</code><code>,</code></p>
-<p><code>  "self": "https://example.com/events/123"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 201 Created
+{
+    "id": 123,
+    "name": "Trivia Night",
+    "date": "02/17/2023",
+    "description": "Trivia night at Paddy’s Pub",
+    "host": "auth0|123456789",
+    "venue": {
+        "id": 789,
+        "name": "Paddy’s Pub",
+        "self": "https://example.com/venues/789"
+  },
+  "self": "https://example.com/events/123"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 403 Forbidden</p>
-<p>{</p>
-<p><code>"error": "Forbidden"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No event with this event_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 403 Forbidden
+{
+    "error": "Forbidden"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "No event with this event_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # <span id="_Toc84856248">Delete a</span>n Event
 
 Allows you to delete an existing event.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>DELETE /events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+DELETE /events/:event_id
+```
 
 ## Request
 
@@ -1028,59 +886,38 @@ authenticated</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 204 No Content</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 204 No Content
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 403 Forbidden</p>
-<p>{</p>
-<p><code>"error": "Forbidden"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No event with this event_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 403 Forbidden
+{
+    "error": "Forbidden"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "No event with this event_id exists"
+}
+```
 
 # Create a Venue
 
 Allows you to create a new venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>POST /venues</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+POST /venues
+```
 
 ## Request
 
@@ -1101,6 +938,7 @@ JSON
 None
 
 ### Request JSON Attributes
+
 
 <table>
 <tbody>
@@ -1139,20 +977,13 @@ None
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"name": "</code><code>Paddy</code><code>’</code><code>s Pub</code><code>",</code></p>
-<p><code>  "</code><code>city</code><code>": "</code><code>Philadelphia</code><code>",</code></p>
-<p><code>"</code><code>type</code><code>": "</code><code>Bar</code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar"
+}
+```
 
 ## Response
 
@@ -1204,73 +1035,52 @@ venue will not be created</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 201 Created</p>
-<p>{</p>
-<p><code>"id": </code><code>789</code><code>,</code></p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>  "city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>  "</code><code>events</code><code>":</code><code> []</code><code>,</code></p>
-<p><code>  "self": "https://example.com/</code><code>venues</code><code>/</code><code>789</code><code>"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 201 Created
+{
+    "id": 789,
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar",
+    "events": [],
+    "self": "https://example.com/venues/789"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "The request object is missing at least one of the required attributes"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "The request object is missing at least one of the required attributes"
+}
+```
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # Get Venues
 
 Allows you to get all existing venues. Paginated to 5 venues per page.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /venues</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /venues
+```
 
 ## Request
 
@@ -1324,91 +1134,70 @@ text/html.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>{</p>
-<p><code>"</code><code>venues</code><code>": [</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>"id": 789,</code></p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>        "city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>        "events": [</code></p>
-<p><code>            </code><code>{</code></p>
-<p><code>                "id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>                "self": "https://example.com/events/123"</code></p>
-<p><code>            </code><code>}</code><code>,</code></p>
-<p><code>            </code><code>{</code></p>
-<p><code>                "id": 456,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>                "self": "https://example.com/events/456"</code></p>
-<p><code>            </code><code>}</code><code>,</code></p>
-<p><code>        ],</code></p>
-<p><code>        "self": "https://example.com/venues/789"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>"id": </code><code>987</code><code>,</code></p>
-<p><code>"name": "</code><code>Moe</code><code>’</code><code>s </code><code>Tavern</code><code>",</code></p>
-<p><code>        "city": "</code><code>Springfield</code><code>",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>        "events": [</code></p>
-<p><code>            </code><code>{</code></p>
-<p><code>                "id": </code><code>321</code><code>,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>                "self": "https://example.com/events/</code><code>321</code><code>"</code></p>
-<p><code>            </code><code>}</code><code>,</code></p>
-<p><code>            </code><code>{</code></p>
-<p><code>                "id": 654,</code></p>
-<p><code>"name": "</code><code>Trivia</code><code> Night",</code></p>
-<p><code>                "self": "https://example.com/events/</code><code>654</code><code>"</code></p>
-<p><code>            </code><code>}</code><code>,</code></p>
-<p><code>        ],</code></p>
-<p><code>        "self": "https://example.com/venues/</code><code>987</code><code>"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code><code>…</code></p>
-<p><code>  ],</code></p>
-<p><code>"next": "www.example.com/events/?cursor=ABCdef123=="</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+"venues": [
+    {
+        "id": 789,
+        "name": "Paddy’s Pub",
+        "city": "Philadelphia",
+        "type": "Bar",
+        "events": [
+            {
+                "id": 123,
+                "name": "Trivia Night",
+                "self": "https://example.com/events/123"
+            },
+            {
+                "id": 456,
+                "name": "Karaoke Night",
+                "self": "https://example.com/events/456"
+            },
+        ],
+        "self": "https://example.com/venues/789"
+    },
+    {
+        "id": 987,
+        "name": "Moe’s Tavern",
+        "city": "Springfield",
+        "type": "Bar",
+        "events": [
+            {
+                "id": 321,
+                "name": "Karaoke Night",
+                "self": "https://example.com/events/321"
+            },
+            {
+                "id": 654,
+                "name": "Trivia Night",
+                "self": "https://example.com/events/654"
+            },
+        ],
+        "self": "https://example.com/venues/987"
+    },
+...
+],
+"next": "www.example.com/events/?cursor=ABCdef123=="
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid types: application/json</code><code> "</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 406 Not Acceptable
+{
+"error": "Unsupported MIME Accept type. Valid types: application/json"
+}
+```
 
 # Get a Venue
 
 Allows you to get an existing venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /venues/:venues_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /venues/:venues_id
+```
 
 ## Request
 
@@ -1482,72 +1271,51 @@ application/json.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p><code>{</code></p>
-<p><code>"id": 789,</code></p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>    </code><code>"city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>    </code><code> </code><code>"events": [</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>            "self": "https://example.com/events/123"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 456,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>            "self": "https://example.com/events/456"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>    ],</code></p>
-<p><code>    "self": "https://example.com/venues/789"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+    "id": 789,
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar",
+    "events": [
+        {
+            "id": 123,
+            "name": "Trivia Night",
+            "self": "https://example.com/events/123"
+        },
+        {
+            "id": 456,
+            "name": "Karaoke Night",
+            "self": "https://example.com/events/456"
+        },
+    ],
+    "self": "https://example.com/venues/789"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No </code><code>venue</code><code> with this </code><code>venue</code><code>_id exists"</code><code>" </code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid type: application/json</code><code> "</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 404 Not Found
+{
+    "error": "No venue with this venue_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
 
 # Edit a Venue
 
 Allows you to edit an existing venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>PATCH /venues/:venue_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+PATCH /venues/:venue_id
+```
 
 ## Request
 
@@ -1621,18 +1389,11 @@ None
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"city": "Philadelphia"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "city": "Philadelphia"
+}
+```
 
 ## Response
 
@@ -1689,85 +1450,64 @@ venue will not be edited</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>{</p>
-<p><code>    </code><code>"id": 789,</code></p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>    "city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>     "events": [</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>            "self": "https://example.com/events/123"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 456,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>            "self": "https://example.com/events/456"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>    ],</code></p>
-<p><code>    "self": "https://example.com/venues/789"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+{
+    "id": 789,
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar",
+    "events": [
+        {
+            "id": 123,
+            "name": "Trivia Night",
+            "self": "https://example.com/events/123"
+        },
+        {
+            "id": 456,
+            "name": "Karaoke Night",
+            "self": "https://example.com/events/456"
+        },
+    ],
+    "self": "https://example.com/venues/789"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No </code><code>venue</code><code> with this </code><code>venue</code><code>_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "No venue with this venue_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # Replace a Venue
 
 Allows you to replace an existing venue (the ID and events remain
 unchanged).
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>PUT /venues/:venue_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+PUT /venues/:venue_id
+```
 
 ## Request
 
@@ -1841,20 +1581,13 @@ None
 
 ### Request Body Example
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>{</p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>  "city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+{
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar"
+}
+```
 
 ## Response
 
@@ -1911,84 +1644,63 @@ venue will not be replaced</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 201 Created</p>
-<p><code>{</code></p>
-<p><code>"id": 789,</code></p>
-<p><code>"name": "Paddy</code><code>’</code><code>s Pub",</code></p>
-<p><code>    "city": "Philadelphia",</code></p>
-<p><code>"type": "Bar"</code></p>
-<p><code>     "events": [</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>            "self": "https://example.com/events/123"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>        </code><code>{</code></p>
-<p><code>            "id": 456,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>            "self": "https://example.com/events/456"</code></p>
-<p><code>        </code><code>}</code><code>,</code></p>
-<p><code>    ],</code></p>
-<p><code>    "self": "https://example.com/venues/789"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 201 Created
+{
+    "id": 789,
+    "name": "Paddy’s Pub",
+    "city": "Philadelphia",
+    "type": "Bar",
+    "events": [
+        {
+            "id": 123,
+            "name": "Trivia Night",
+            "self": "https://example.com/events/123"
+        },
+        {
+            "id": 456,
+            "name": "Karaoke Night",
+            "self": "https://example.com/events/456"
+        },
+    ],
+    "self": "https://example.com/venues/789"
+}
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 400 Bad Request</p>
-<p>{</p>
-<p><code>"error": "One of the attributes has an incorrect type"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No </code><code>venue</code><code> with this </code><code>venue</code><code>_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Accept type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 415 Unsupported Media Type</p>
-<p>{</p>
-<p><code>"error": "Unsupported MIME Content-Type. Valid type: application/json"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 400 Bad Request
+{
+    "error": "One of the attributes has an incorrect type"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "No venue with this venue_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
+```json
+Status: 415 Unsupported Media Type
+{
+    "error": "Unsupported MIME Content-Type. Valid type: application/json"
+}
+```
 
 # Delete a Venue
 
 Allows you to delete an existing venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>DELETE /venue /:venue _id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+DELETE /venue /:venue _id
+```
 
 ## Request
 
@@ -2060,47 +1772,26 @@ Failure: JSON
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 204 No Content</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 204 No Content
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No </code><code>venue</code><code> with this </code><code>venue</code><code>_id exists"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 404 Not Found
+{
+    "error": "No venue with this venue_id exists"
+}
+```
 
 # Get Events by Venue
 
 Allows you to get all events for a venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /venues/:venues_id/events</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /venues/:venues_id/events
+```
 
 ## Request
 
@@ -2174,65 +1865,44 @@ application/json.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p><code>[</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>        "id": 123,</code></p>
-<p><code>"name": "Trivia Night",</code></p>
-<p><code>        "self": "https://example.com/events/123"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>        "id": 456,</code></p>
-<p><code>"name": "Karaoke Night",</code></p>
-<p><code>        "self": "https://example.com/events/456"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>]</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+[
+    {
+        "id": 123,
+        "name": "Trivia Night",
+        "self": "https://example.com/events/123"
+    },
+    {
+        "id": 456,
+        "name": "Karaoke Night",
+        "self": "https://example.com/events/456"
+    },
+]
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "No </code><code>venue</code><code> with this </code><code>venue</code><code>_id exists"</code><code>" </code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid type: application/json</code><code> "</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 404 Not Found
+{
+    "error": "No venue with this venue_id exists"
+}
+```
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid type: application/json"
+}
+```
 
 # Add an Event to a Venue
 
 Allows you to add an event to a venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>PUT /:venue_id/events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+PUT /:venue_id/events/:event_id
+```
 
 ## Request
 
@@ -2320,59 +1990,38 @@ exists</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 204 No Content</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 204 No Content
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 403 Forbidden</p>
-<p>{</p>
-<p><code>"error": "Forbidden"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "The specified event and/or venue does not exist"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 403 Forbidden
+{
+    "error": "Forbidden"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "The specified event and/or venue does not exist"
+}
+```
 
 # Remove an Event from a Venue
 
 Allows you to add an event to a venue.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>DELETE /:venue_id/events/:event_id</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+DELETE /:venue_id/events/:event_id
+```
 
 ## Request
 
@@ -2460,59 +2109,38 @@ exists</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 204 No Content</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 204 No Content
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 401 Unauthorized</p>
-<p>{</p>
-<p><code>"error": "Unauthorized"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td><p>Status: 403 Forbidden</p>
-<p>{</p>
-<p><code>"error": "Forbidden"</code></p>
-<p>}</p></td>
-</tr>
-<tr class="odd">
-<td><p>Status: 404 Not Found</p>
-<p>{</p>
-<p><code>"error": "The specified event and/or venue does not exist"</code></p>
-<p><code>}</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 401 Unauthorized
+{
+    "error": "Unauthorized"
+}
+```
+```json
+Status: 403 Forbidden
+{
+    "error": "Forbidden"
+}
+```
+```json
+Status: 404 Not Found
+{
+    "error": "The specified event and/or venue does not exist"
+}
+```
 
 # Get Users
 
 Allows you to get all existing users.
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>GET /users</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+GET /users
+```
 
 ## Request
 
@@ -2566,43 +2194,29 @@ text/html.</p></td>
 
 #### Success
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 200 OK</p>
-<p>[</p>
-<p><code>    </code><code>{</code></p>
-<p><code>        "sub": "auth0|</code><code>123456789</code><code>",</code></p>
-<p><code>        "name": "</code><code>Frank Reynolds</code><code>",</code></p>
-<p><code>        "email": "</code><code>trashman</code><code>@oregonstate.edu",</code></p>
-<p><code>        "id": "</code><code>123</code><code>"</code></p>
-<p><code>    </code><code>}</code><code>,</code></p>
-<p><code>    </code><code>{</code></p>
-<p><code>        "sub": "auth0|</code><code>987654321</code><code>",</code></p>
-<p><code>        "name": "</code><code>Dee Reynolds</code><code>",</code></p>
-<p><code>        "email": "</code><code>dee.r</code><code>@gmail.com",</code></p>
-<p><code>        "id": "</code><code>321</code><code>"</code></p>
-<p><code>    </code><code>}</code></p>
-<p>]</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 200 OK
+[
+    {
+        "sub": "auth0|123456789",
+        "name": "Frank Reynolds",
+        "email": "trashman@oregonstate.edu",
+        "id": "123"
+    },
+    {
+        "sub": "auth0|987654321",
+        "name": "Dee Reynolds",
+        "email": "dee.r@gmail.com",
+        "id": "321"
+    }
+]
+```
 
 #### Failure
 
-<table>
-<tbody>
-<tr class="odd">
-<td><p>Status: 406 Not Acceptable</p>
-<p>{</p>
-<p><code>"</code><code>e</code><code>rror": "Unsupported MIME Accept type. </code><code>Valid types: application/json</code><code> "</code></p>
-<p>}</p></td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-</tbody>
-</table>
+```json
+Status: 406 Not Acceptable
+{
+    "error": "Unsupported MIME Accept type. Valid types: application/json"
+}
+```
